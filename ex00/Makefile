@@ -1,7 +1,7 @@
 NAME		:=		 Fixed
 
 
-CPP			:=		c++
+CPP			:=		g++-11
 
 CPPFLAGS	:=		-Wall -Wextra -Werror -std=c++98
 
@@ -26,4 +26,3 @@ fclean:	clean
 re:		fclean all
 
 .PHONY:	clean fclean re
-	

@@ -3,7 +3,6 @@
 #include <cmath>
 #include <iostream>
 
-using namespace std;
 class Fixed
 {
 	
@@ -24,11 +23,5 @@ class Fixed
 	void setRawBits(int const rew);
 	float toFloat(void)const;
 	int toInt(void)const;
-
-
-
-
-	
-
 };
 #endif
