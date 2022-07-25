@@ -2,37 +2,37 @@
 
 Fixed::Fixed(void)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << GREEN << "Fixed point:	" << RESET << "default constructor called" << std::endl;
 	this->value_ = 0;
 }
 
 Fixed::Fixed(int const param)
 {
-	std::cout << "Int constructor called" <<std::endl;
+	std::cout << YEL << "Fixed point:	" << RESET <<  "Int constructor called" <<std::endl;
 	this->value_ = param << this->nbBits_;
 
 }
 
 Fixed::Fixed(const float nb)
 {
-	std::cout << "Float constructor called" << std::endl;
+	std::cout << BLUE << "Fixed point:	" << RESET <<  "Float constructor called" << std::endl;
 	this->value_ = (int)(roundf)(nb * (1 << this->nbBits_));
 }
 
 Fixed::Fixed(const Fixed& normal)
 {
-	std::cout << "Copy constructor called"<< std::endl;
+	std::cout << PINK << "Fixed point:	" << RESET << "Copy constructor called"<< std::endl;
 	*this = normal;
 }
 
 Fixed::~Fixed(void)
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << RED << "Fixed point:	" << RESET <<  "Destructor called" << std::endl;
 }
 
 Fixed& Fixed::operator=(const Fixed& nb)
 {
-	std::cout << "Copy assignment operator called"<<std::endl;
+	std::cout << VIOLET << "Fixed point:	" << RESET << " operator= called"<<std::endl;
 	if (this != &nb)
 	{
 		this->value_ = nb.getRawBits();
@@ -42,23 +42,19 @@ Fixed& Fixed::operator=(const Fixed& nb)
 
 int Fixed::getRawBits(void)const
 {
-	std::cout << "getRawBits member function called"<<std::endl;
+	// std::cout << "getRawBits member function called"<<std::endl;
 	return (this->value_);
 }
 void Fixed::setRawBits(int numbers)
 {
-	std::cout << "setRawBits member function called"<<std::endl;
+	// std::cout << "setRawBits member function called"<<std::endl;
 	this->value_= numbers;
 }
 
 float Fixed::toFloat(void)const
 {
-	return((float)this->value_ / (float)(1 << this->nbBits_));
+	return((float)this->value_ / (1 << this->nbBits_));
 }
-	
-
-
-
 
 int Fixed::toInt(void)const
 {
@@ -87,6 +83,7 @@ bool Fixed::operator>=(const Fixed &other) const
 {
 	return (this->value_ >= other.getRawBits());
 }
+
 bool Fixed::operator<=(const Fixed &other) const
 {
 	return (this->value_ <= other.getRawBits());
@@ -120,19 +117,21 @@ Fixed Fixed::operator/(const Fixed &other)
 }
 
 
-Fixed Fixed::operator--()
+Fixed &Fixed::operator--()
 {
 	
 	this->value_--;
 	return(*this);
 }
+
 Fixed  Fixed::operator--(int)
 {
 	Fixed tmp = *this;
 	this->value_--;
 	return(tmp);
 }
-Fixed Fixed::operator++()
+
+Fixed &Fixed::operator++()
 {
 	this->value_++;
 	return(*this);

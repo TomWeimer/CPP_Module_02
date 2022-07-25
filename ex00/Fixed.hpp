@@ -3,6 +3,18 @@
 #include <cmath>
 #include <iostream>
 
+#define WHITE 		"\e[1;37m"
+#define BLANK 		"\e[0;30m"
+#define UNDERLINE  	"\e[4;37m"
+#define GREEN 		"\e[1;32m"
+#define VIOLET		"\033[36m"
+#define BLUE  		"\e[1;34m"
+#define PURPLE 		"\033[33m"
+#define PINK		"\e[1;35m"
+#define RESET 		"\033[0m"
+#define RED 		"\033[31m"
+#define YEL			"\033[33m"
+
 class Fixed
 {
 	
@@ -12,8 +24,6 @@ class Fixed
 
 	public:
 	Fixed();
-	Fixed(int const param);
-	Fixed(float const param);
 	Fixed(const Fixed& normal);
 
 	~Fixed();
@@ -21,7 +31,5 @@ class Fixed
 	Fixed& operator=(const Fixed& nb);
 	int getRawBits( void ) const;
 	void setRawBits(int const rew);
-	float toFloat(void)const;
-	int toInt(void)const;
 };
 #endif
